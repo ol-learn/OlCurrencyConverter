@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.college.converter.databinding.ActivityMainBinding;
+
 /*
     TODOs:
     In groups of 4, complete the following tasks, 1 for each team member:
@@ -24,9 +26,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+    private ActivityMainBinding variableBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(variableBinding.getRoot());
+
         setContentView(R.layout.activity_main);
 
         Button buttonConvert = findViewById(R.id.convertButton);
@@ -43,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
         String inputAmount = inputView.getText().toString();
 
         TextView resultView = findViewById(R.id.resultId);
+        String unit_euros = getResources().getString(R.string.unit_euros);
 
         if (!inputAmount.isEmpty()) {
             Float inputAmountDecimal = Float.valueOf(inputAmount);
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );
+            resultView.setText( resultFloat + unit_euros );
         }
     }
 }
