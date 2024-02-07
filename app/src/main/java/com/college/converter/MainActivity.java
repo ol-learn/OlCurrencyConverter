@@ -43,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
         String inputAmount = inputView.getText().toString();
 
         TextView resultView = findViewById(R.id.resultId);
+        String unit_euros = getResources().getString(R.string.unit_euros);
 
         if (!inputAmount.isEmpty()) {
             Float inputAmountDecimal = Float.valueOf(inputAmount);
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );
+            resultView.setText( resultFloat + unit_euros );
         }
     }
 }
